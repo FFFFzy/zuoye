@@ -1,0 +1,23 @@
+{
+  "hash": "a1e3fd6c",
+  "browserHash": "e8ebdf1c",
+  "optimized": {
+    "axios": {
+      "src": "../../utils/node_modules/axios/index.js",
+      "file": "axios.js",
+      "fileHash": "d97e4caa",
+      "needsInterop": true
+    },
+    "js-cookie": {
+      "src": "../../utils/node_modules/js-cookie/dist/js.cookie.mjs",
+      "file": "js-cookie.js",
+      "fileHash": "680e28cd",
+      "needsInterop": false
+    }
+  },
+  "chunks": {
+    "chunk-6Y7JUF5L": {
+      "file": "chunk-6Y7JUF5L.js"
+    }
+  }
+}
