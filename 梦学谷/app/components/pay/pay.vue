@@ -1,60 +1,56 @@
 <template>
 	<view>
-				<view class="box" v-for="(item, index) in List" :key="index">
-					<view class="box-img"><img class="image" :src="item.mainImage" alt="" />
-					<view class="time">{{item.totalTime}}</view>
-					</view>
-					<view class="box-right">
-						<view class="title">{{ item.title }}</view>
-						<text class="iconfont icon-laoshi2">{{ item.nickName }}</text>
-						<br />
-						<span>
-							<i class="i iconfont icon-moneybag">{{ item.priceDiscount || item.priceOriginal }}</i>
-							<s class="s iconfont icon-video">{{ item.commTotal }}人在学</s>
-						</span>
-					</view>
-				</view>
-		
+		<view class="box" v-for="(item, index) in lists" :key="index">
+			<view class="box-img">
+				<img class="image" :src="item.mainImage" alt="" />
+				<view class="time">{{ item.totalTime }}</view>
+			</view>
+			<view class="box-right">
+				<view class="title">{{ item.title }}</view>
+				<text class="iconfont icon-laoshi2">{{ item.nickName }}</text>
+				<br />
+				<span>
+					<i class="i iconfont icon-moneybag">{{ item.priceDiscount || item.priceOriginal }}</i>
+					<s class="s iconfont icon-video">{{ item.commTotal }}人在学</s>
+				</span>
+			</view>
+		</view>
 	</view>
 </template>
 
 <script>
-import { getHotList } from '../../utils/api.js';
+import { getPaymentLists } from '../../utils/api.js';
 import { reactive, toRefs } from 'vue';
 export default {
+	props:['lists'],
 	name: 'groom',
 	setup() {
-		const data = reactive({
-			List: []
-		});
-		getHotList().then(res => {
-			data.List = res.data.data.records;
-			
-		});
-		return { ...toRefs(data) };
+		
+		// const data = reactive({
+		// 	List: []
+		// });
+		// 	getPaymentLists().then(res => {
+		// 		data.List = res.data.data.records;
+		// 	});
+
+		// return { ...toRefs(data) };
 	}
 };
 </script>
 
 <style lang="scss">
-	// .tuijian{
-	// 	white-space: nowrap;
-	// 	.left,.right{
-	// 		display: inline-block;
-	// 	}
-	// }
-	.time{
-		position: absolute;
-		color: white;
-		right: 4px;
-		bottom: 4px;
-		background-color: rgba(1,0,0,0.5);
-		width: 50px;
-		height: 15px;
-		padding: 5rpx;
-		border-radius: 20rpx;
-		font-size: 16rpx;
-	}
+.time {
+	position: absolute;
+	color: white;
+	right: 4px;
+	bottom: 4px;
+	background-color: rgba(1, 0, 0, 0.5);
+	width: 50px;
+	height: 15px;
+	padding: 5rpx;
+	border-radius: 20rpx;
+	font-size: 16rpx;
+}
 .box {
 	width: 100%;
 	height: 190rpx;

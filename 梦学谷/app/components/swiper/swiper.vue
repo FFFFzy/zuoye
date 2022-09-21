@@ -22,44 +22,50 @@
 </template>
 
 <script>
+import { onPageScroll } from '@dcloudio/uni-app';
 import { reactive, toRefs } from 'vue';
 import { getbanner } from '../../utils/api.js';
 export default {
 	setup(props, context) {
-		const data=reactive({
+		const data = reactive({
 			background: ['color1', 'color2', 'color3'],
 			indicatorDots: true,
 			autoplay: true,
 			interval: 2000,
 			duration: 500,
-			image:[],
-			autoplay:0,
-			str:''
-		})
+			image: [],
+			autoplay: 0,
+			str: ''
+		});
 		// 轮播图数据
 		getbanner().then(res => {
 			// console.log(res);
-			data.image=res.data.data
+			data.image = res.data.data;
 			// console.log(data.image);
 		});
-	
-	
-		let changeAutoplay=(e)=>{
-			data.autoplay=e.detail.current
-			if(data.autoplay==0){
-				data.str='#006c00'
-			}else if(data.autoplay==1){
-				data.str='#45328c'
-			}else{
-				data.str='#0072b7'
+
+		let changeAutoplay = e => {
+			data.autoplay = e.detail.current;
+			if (data.autoplay == 0) {
+				data.str = '#006c00';
+			} else if (data.autoplay == 1) {
+				data.str = '#45328c';
+			} else {
+				data.str = '#0072b7';
 			}
-			context.emit('str',data.str)
+			context.emit('str', data.str);
+		};
+
+		return { ...toRefs(data), changeAutoplay, getbanner };
+	},
+	onPageScroll(e) {
+		console.log(e);
+		if (e.scrollTop > 100) {
+			// this.str = '#345dc2';
+			this.changeAutoplay = null;
 		}
-	
-		return {...toRefs(data),changeAutoplay,getbanner}
 	}
 };
-
 </script>
 
 <style lang="scss">

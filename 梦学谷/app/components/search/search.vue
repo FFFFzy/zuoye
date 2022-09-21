@@ -13,7 +13,12 @@ export default {
 	props:['bg'],
 	setup() {
 		
-		// return {str}
+	},
+	onPageScroll(e) {
+		if (e.scrollTop > 100) {
+			this.bg = '#345dc2';
+			// this.changeAutoplay = null;
+		}
 	}
 };
 </script>

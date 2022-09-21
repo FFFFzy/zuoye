@@ -5,16 +5,6 @@
 			"style": {
 				// "navigationBarBackgroundColor": "#345DC2",
 				"navigationBarTextStyle": "white"
-				// "app-plus": {
-				// 	"titleNView": {
-				// 		"searchInput": {
-				// 			"borderRadius": "20px",
-				// 			"placeholder": "搜索你想要的商品",
-				// 			"backgroundColor": "#fff",
-				// 			"disabled": true
-				// 		}
-				// 	}
-				// }
 			}
 		},
 		{
@@ -30,8 +20,21 @@
             "path" : "pages/sort/sort",
             "style" :                                                                                    
             {
-                "navigationBarTitleText": "",
-                "enablePullDownRefresh": false
+                "navigationBarTitleText": "分类",
+                "enablePullDownRefresh": false,
+				"navigationBarBackgroundColor": "#345DC2",
+				"navigationBarTextStyle": "white",
+				"app-plus": {
+					"titleNView": {
+						"buttons": [
+							{
+								"text": "\ue600",
+								"fontSrc": "static/font/iconfont.ttf",
+								"fontSize": "22px"
+							}
+						]
+					}
+				}
             }
             
         }

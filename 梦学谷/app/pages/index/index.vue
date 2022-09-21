@@ -45,7 +45,14 @@
 		</view>
 		<view class="groom-right">全部></view>
 	</view>
-	<pay></pay>
+	<pay :lists="Lists"></pay>
+	<!-- 滚动事件 -->
+	<listen class="top" :showFlag="showFlag"></listen>
+	<!-- 底部 -->
+	<view class="txt">
+		<text>--我是有底线的--</text>
+	</view>
+	
 </template>
 
 <script>
@@ -53,25 +60,60 @@ import swiperbox from '../../components/swiper/swiper.vue';
 import search from '../../components/search/search.vue';
 // 热门推荐
 import groom from '../../components/groom/groom.vue';
-// 近期上新
-
 import { reactive, toRefs } from 'vue';
-import { getHotrecom } from '../../utils/api.js';
+import { getHotrecom ,getPaymentLists } from '../../utils/api.js';
+import {onPageScroll,onReachBottom,onPullDownRefresh} from '@dcloudio/uni-app'
 export default {
 	setup() {
 		const data = reactive({
 			list: [],
-			bg: '#006c00'
+			Lists: [],
+			bg: '#006c00',
+			// 返回顶部显示隐藏
+			showFlag:false,
+			page:10,
+			pageSize:1
+			
 		});
+		// 上拉刷新
+		   onPullDownRefresh(() => {
+		    data.page = 1
+		    getPaymentLists(data.page, data.pageSize).then(res => {
+		     data.Lists = res.data.records
+		    })
+		    // 停止下拉
+		    uni.stopPullDownRefresh()
+		   })
+		   
+		   // 触底加载
+		   onReachBottom(() => {
+		    data.page++
+		    getPaymentLists(data.page, data.pageSize).then(res => {
+		     data.Lists = [...res.data.data.records, ...data.Lists]
+		    })
+		   })
+		getPaymentLists().then(res => {
+			data.Lists = res.data.data.records;
+		});
+		// 引用数据
 		getHotrecom().then(res => {
 			// console.log(res);
 			data.list = res.data.data;
 			// console.log(data.list);
 		});
+		// 背景颜色
 		const str = i => {
 			// console.log(i);
 			data.bg = i;
 		};
+		// 监听页面滚动事件
+		onPageScroll((e)=>{
+			if(e.scrollTop>400){
+				data.showFlag=true
+			}else{
+				data.showFlag=false
+			}
+		})
 		return { ...toRefs(data), str };
 	},
 	components: {
@@ -83,6 +125,13 @@ export default {
 </script>
 
 <style lang="scss">
+	.txt{
+		color: #979fa7;
+		width: 100%;
+		height: 60px;
+		line-height: 60px;
+		text-align: center;
+	}
 .classify {
 	width: 100%;
 	height: 95px;
@@ -134,5 +183,10 @@ export default {
 		font-size: 26rpx;
 		color: #979fa7;
 	}
+}
+.top{
+	position: fixed;
+	right: 20px;
+	bottom: 90px;
 }
 </style>
