@@ -3,7 +3,7 @@
 		<!-- <input class="search" type="text" placeholder="搜索你想要的商品" disabled> -->
 		<view class="search-input">
 			<view class="iconfont icon-search"></view>
-			<view>搜索你想要的内容</view>
+			<view class="txt">搜索你想要的内容</view>
 		</view>
 	</view>
 </template>
@@ -40,11 +40,15 @@ export default {
 		display: flex;
 		justify-content: center;
 		align-items: center;
-		font-size: 17rpx;
+		font-size: 22rpx;
 		color: #9f9d9d;
 		&:first-of-type {
 			margin-right: 5rpx;
 		}
 	}
+}
+.txt{
+	font-size: 32rpx;
+	margin-right: 5px;
 }
 </style>

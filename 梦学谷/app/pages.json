@@ -11,7 +11,10 @@
 			"path": "pages/home/home"
 		},
 		{
-			"path": "pages/my/my"
+			"path": "pages/my/my",
+			"style": {
+				"navigationBarBackgroundColor": "#345DC2"
+			}
 		},
 		{
 			"path": "pages/cart/cart"
@@ -49,6 +52,24 @@
         }
         ,{
             "path" : "components/swiper/swiper",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+        ,{
+            "path" : "pages/search-plus/search-plus",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+        ,{
+            "path" : "pages/search/search",
             "style" :                                                                                    
             {
                 "navigationBarTitleText": "",

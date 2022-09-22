@@ -1,13 +1,13 @@
 <template>
 	<view class="content">
 		<!-- 搜索框 -->
-		<search :bg="bg"></search>
+		<search :bg="bg" @click="go"></search>
 		<!-- 轮播图 -->
 		<swiperbox :autoplay="true" :indicator-dots="true" @str="str"></swiperbox>
 	</view>
 	<!-- 首页分类 -->
 	<view class="classify">
-		<view class="classitem" v-for="(item, index) in list.splice(0, 7)" :key="index">{{ item.name }}</view>
+		<view class="classitem" @click="gosearch" v-for="(item, index) in list.splice(0, 7)" :key="index">{{ item.name }}</view>
 		<view class="classitem">全部分类</view>
 	</view>
 	<!-- 热门推荐 -->
@@ -49,10 +49,7 @@
 	<!-- 滚动事件 -->
 	<listen class="top" :showFlag="showFlag"></listen>
 	<!-- 底部 -->
-	<view class="txt">
-		<text>--我是有底线的--</text>
-	</view>
-	
+	<view class="txt"><text>--我是有底线的--</text></view>
 </template>
 
 <script>
@@ -61,37 +58,51 @@ import search from '../../components/search/search.vue';
 // 热门推荐
 import groom from '../../components/groom/groom.vue';
 import { reactive, toRefs } from 'vue';
-import { getHotrecom ,getPaymentLists } from '../../utils/api.js';
-import {onPageScroll,onReachBottom,onPullDownRefresh} from '@dcloudio/uni-app'
+import { getHotrecom, getPaymentLists } from '../../utils/api.js';
+import { onPageScroll, onReachBottom, onPullDownRefresh } from '@dcloudio/uni-app';
+import { useRouter } from 'vue-router';
 export default {
 	setup() {
+		const { push } = useRouter();
 		const data = reactive({
 			list: [],
 			Lists: [],
 			bg: '#006c00',
 			// 返回顶部显示隐藏
-			showFlag:false,
-			page:10,
-			pageSize:1
-			
+			showFlag: false,
+			page: 10,
+			pageSize: 1
 		});
+		// 跳转
+		const go = () => {
+			uni.navigateTo({
+				url: './../search/search'
+			});
+		};
+		// 跳转
+		const gosearch = () => {
+			uni.navigateTo({
+				url: './../search-plus/search-plus'
+			});
+		};
+
 		// 上拉刷新
-		   onPullDownRefresh(() => {
-		    data.page = 1
-		    getPaymentLists(data.page, data.pageSize).then(res => {
-		     data.Lists = res.data.records
-		    })
-		    // 停止下拉
-		    uni.stopPullDownRefresh()
-		   })
-		   
-		   // 触底加载
-		   onReachBottom(() => {
-		    data.page++
-		    getPaymentLists(data.page, data.pageSize).then(res => {
-		     data.Lists = [...res.data.data.records, ...data.Lists]
-		    })
-		   })
+		onPullDownRefresh(() => {
+			data.page = 1;
+			getPaymentLists(data.page, data.pageSize).then(res => {
+				data.Lists = res.data.records;
+			});
+			// 停止下拉
+			uni.stopPullDownRefresh();
+		});
+
+		// 触底加载
+		onReachBottom(() => {
+			data.page++;
+			getPaymentLists(data.page, data.pageSize).then(res => {
+				data.Lists = [...res.data.data.records, ...data.Lists];
+			});
+		});
 		getPaymentLists().then(res => {
 			data.Lists = res.data.data.records;
 		});
@@ -107,14 +118,14 @@ export default {
 			data.bg = i;
 		};
 		// 监听页面滚动事件
-		onPageScroll((e)=>{
-			if(e.scrollTop>400){
-				data.showFlag=true
-			}else{
-				data.showFlag=false
+		onPageScroll(e => {
+			if (e.scrollTop > 400) {
+				data.showFlag = true;
+			} else {
+				data.showFlag = false;
 			}
-		})
-		return { ...toRefs(data), str };
+		});
+		return { ...toRefs(data), str, go, gosearch };
 	},
 	components: {
 		swiperbox,
@@ -125,13 +136,13 @@ export default {
 </script>
 
 <style lang="scss">
-	.txt{
-		color: #979fa7;
-		width: 100%;
-		height: 60px;
-		line-height: 60px;
-		text-align: center;
-	}
+.txt {
+	color: #979fa7;
+	width: 100%;
+	height: 60px;
+	line-height: 60px;
+	text-align: center;
+}
 .classify {
 	width: 100%;
 	height: 95px;
@@ -184,7 +195,7 @@ export default {
 		color: #979fa7;
 	}
 }
-.top{
+.top {
 	position: fixed;
 	right: 20px;
 	bottom: 90px;

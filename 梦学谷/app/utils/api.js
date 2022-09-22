@@ -41,8 +41,11 @@ const Readnav = () => {
 	return data
 }
 /**阅读推荐数据*/
-const Readgroom=(page, pageSize)=>{
-	let data=http.post('article/api/article/search',{size:10,current:1})
+const Readgroom = (page, pageSize) => {
+	let data = http.post('article/api/article/search', {
+		size: 10,
+		current: 1
+	})
 	return data
 }
 /**阅读分类数据*/
@@ -54,6 +57,28 @@ const Readclassify = (page, pageSize) => {
 	})
 	return data
 }
+/**问答 热门回答*/
+const Questionsnav=(page, pageSize)=>{
+	let data=http.post('question/api/question/hot',{current: 1, size: 10})
+	return data
+}
+/**问答 最新问题*/
+const newnav=(page, pageSize)=>{
+	let data=http.post('question/api/question/new',{current: 1, size: 10})
+	return data
+}
+// 问答 等待回答
+
+const waitnav=(page, pageSize)=>{
+	let data=http.post('question/api/question/wait',{current: 1, size: 10})
+	return data
+}
+
+/**搜索*/
+const search=()=>{
+	let data=http.post('course/api/course/search')
+	return data
+}
 export {
 	getbanner,
 	getHotrecom,
@@ -63,5 +88,9 @@ export {
 	classify,
 	Readnav,
 	Readclassify,
-	Readgroom
+	Readgroom,
+	Questionsnav,
+	newnav,
+	waitnav,
+	search
 }

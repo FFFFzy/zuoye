@@ -13,7 +13,6 @@
 			<view class="right-title" v-for="item,index in List">
 				{{item.labelList[id].name}}
 			</view>
-			
 		</view>
 	</view>
 </template>
