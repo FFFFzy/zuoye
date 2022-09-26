@@ -1,5 +1,5 @@
 <template>
-	<view><search class="search"></search></view>
+	<view><search class="search" @click="gosearch"></search></view>
 	<div class="nav-tab">
 		<p @click="tohot(0)" :class="{ active: i == 0 }">热门回答</p>
 		<p @click="tohot(1)" :class="{ active: i == 1 }">最新问题</p>
@@ -85,7 +85,13 @@ export default {
 				data.showFlag = false;
 			}
 		});
-		return { tohot, ...toRefs(data) };
+		// 跳转
+		const gosearch = () => {
+			uni.navigateTo({
+				url: './../search/search'
+			});
+		};
+		return { tohot, ...toRefs(data),gosearch };
 	}
 };
 </script>

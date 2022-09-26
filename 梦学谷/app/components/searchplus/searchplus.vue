@@ -1,20 +1,20 @@
 <template>
-	<view>
-		<div class="search-box">
-			<img src="/static/fonticon/fanhui.png" alt="" @click="back">
-			<input type="text" placeholder="搜索你想要的内容" @blur="searchdata" v-model="content">
-			<img src="/static/sousuo.png" alt="" class="img">
-			<span @click="back">取消</span>
-		</div>
+	<view class="search-box">
+	<img src="/static/fonticon/fanhui.png" alt="" @click="back">
+	<input type="text" placeholder="搜索你想要的内容" @blur="searchdata" v-model="content">
+	<img src="/static/搜索/搜索(1).png" alt="" class="img">
+	<span @click="back">取消</span>
 	</view>
 </template>
 
 <script>
 	import { reactive,toRefs } from 'vue'
  	import {search} from '../../utils/api.js'
+	import {useRouter} from 'vue-router'
 	export default {
 		name: "search-plus",
 		setup(props,ctx) {
+			const router=useRouter()
 			const data=reactive({
 				content:''
 			})
@@ -22,7 +22,6 @@
 			const searchdata=()=>{
 				if(data.content!=''){
 					search(data.content).then(res=>{
-						// console.log(res);
 						ctx.emit('searchlist',res.data.data.records)
 					})
 				}
@@ -32,9 +31,10 @@
 			}
 			// 返回上一级
 			const back = () => {
-				uni.navigateBack({
-					delta: 1
-				})
+				// uni.navigateBack({
+				// 	delta: 1
+				// })
+				router.go('-1')
 			}
 			return {
 				...toRefs(data),
@@ -47,7 +47,7 @@
 
 <style lang="scss">
 	.search-box {
-		z-index: 1;
+		z-index: 999;
 		position: fixed;
 		background-color: #fff;
 		top: 0;
@@ -58,7 +58,6 @@
 		height: 100rpx;
 		line-height: 100rpx;
 		align-items: center;
-
 		img {
 			width: 45rpx;
 		}

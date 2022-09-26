@@ -14,6 +14,13 @@ const getHotList = (msg) => {
 	let data = http.post('course/api/course/search', msg)
 	return data
 }
+
+/** 播放详情接口*/
+const playback = () => {
+	let data = http.get('course/api/course/null')
+	return data
+}
+
 /** 付费精品数据*/
 const getPaymentLists = (page, pageSize) => {
 	let data = http.post('course/api/course/search', {
@@ -58,28 +65,70 @@ const Readclassify = (page, pageSize) => {
 	return data
 }
 /**问答 热门回答*/
-const Questionsnav=(page, pageSize)=>{
-	let data=http.post('question/api/question/hot',{current: 1, size: 10})
+const Questionsnav = (page, pageSize) => {
+	let data = http.post('question/api/question/hot', {
+		current: 1,
+		size: 10
+	})
 	return data
 }
 /**问答 最新问题*/
-const newnav=(page, pageSize)=>{
-	let data=http.post('question/api/question/new',{current: 1, size: 10})
+const newnav = (page, pageSize) => {
+	let data = http.post('question/api/question/new', {
+		current: 1,
+		size: 10
+	})
 	return data
 }
 // 问答 等待回答
-
-const waitnav=(page, pageSize)=>{
-	let data=http.post('question/api/question/wait',{current: 1, size: 10})
+const waitnav = (page, pageSize) => {
+	let data = http.post('question/api/question/wait', {
+		current: 1,
+		size: 10
+	})
 	return data
 }
 
 /**搜索*/
-const search=()=>{
-	let data=http.post('course/api/course/search')
+const search = (page, pageSize) => {
+	let data = http.post('course/api/course/search', {
+		current: 1,
+		size: 10
+	})
 	return data
 }
+
+const getUser = (mobile,code) => {
+	let data = http.post('/auth/login', {
+		code,
+		mobile
+	})
+	return data
+}
+// 详情数据
+ const getDetailList=()=>{
+	 let data=http.get('course/api/course/null')
+	 return data
+ }
+ // 获取视频数据
+ const getArticle=(id)=>{
+ 	 let data=http.get(`course/course/buy/list/null/${id}`)
+ 	 return data
+ }
+ // 获取评论详情
+ const getComment=()=>{
+ 	 let data=http.get('course/api/comment/list/null')
+ 	 return data
+ }
+ // 获取套餐信息
+ const getGroup=()=>{
+ 	 let data=http.get('course/api/group/list/null')
+ 	 return data
+ }
+ 
+
 export {
+	getUser,
 	getbanner,
 	getHotrecom,
 	getHotList,
@@ -92,5 +141,10 @@ export {
 	Questionsnav,
 	newnav,
 	waitnav,
-	search
+	search,
+	playback,
+	getDetailList,
+	getArticle,
+	getComment,
+	getGroup
 }

@@ -33,7 +33,8 @@
 							{
 								"text": "\ue600",
 								"fontSrc": "static/font/iconfont.ttf",
-								"fontSize": "22px"
+								"fontSize": "22px",
+								"color": "#fff"
 							}
 						]
 					}
@@ -70,6 +71,24 @@
         }
         ,{
             "path" : "pages/search/search",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+        ,{
+            "path" : "pages/login/login",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+        ,{
+            "path" : "pages/playback/playback",
             "style" :                                                                                    
             {
                 "navigationBarTitleText": "",

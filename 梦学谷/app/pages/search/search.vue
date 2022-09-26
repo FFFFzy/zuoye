@@ -3,7 +3,7 @@
 		<!-- 搜索plus -->
 		<searchplus></searchplus>
 		<!-- 热门搜索 -->
-		<p style="margin-top: 120rpx;">热门搜索</p>
+		<p style="margin-top: 20rpx;">热门搜索</p>
 		<div class="box">
 			<div class="item" v-for="item,index in hotlist" :key="index" @click="hotsearch(item)">{{item}}</div>
 		</div>
@@ -50,7 +50,7 @@
 
 <style lang="scss">
 p{
-	margin: 20rpx 10rpx;
+	margin: 0rpx 10rpx;
 	font-weight: 500;
 	display: flex;
 	justify-content: space-between;

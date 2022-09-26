@@ -21,6 +21,9 @@ const request = (options = {}) => {
 			timeout: 8000, // 8秒超时时间，单位ms
 			success: (res) => {
 				// console.log('res', res.data)
+				uni.showLoading({
+					title:'加载中'
+				})
 				resolve(res.data)
 			},
 			fail: (err) => {

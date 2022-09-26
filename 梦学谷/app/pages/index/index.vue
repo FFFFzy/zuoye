@@ -3,7 +3,7 @@
 		<!-- 搜索框 -->
 		<search :bg="bg" @click="go"></search>
 		<!-- 轮播图 -->
-		<swiperbox :autoplay="true" :indicator-dots="true" @str="str"></swiperbox>
+		<swiperbox :autoplay="true" :indicator-dots="true" @str="str" @click="play"></swiperbox>
 	</view>
 	<!-- 首页分类 -->
 	<view class="classify">
@@ -63,7 +63,7 @@ import { onPageScroll, onReachBottom, onPullDownRefresh } from '@dcloudio/uni-ap
 import { useRouter } from 'vue-router';
 export default {
 	setup() {
-		const { push } = useRouter();
+		const router = useRouter();
 		const data = reactive({
 			list: [],
 			Lists: [],
@@ -73,7 +73,13 @@ export default {
 			page: 10,
 			pageSize: 1
 		});
-		// 跳转
+		// 跳转详情
+		const play=()=>{
+			uni.navigateTo({
+				url:'././../playback/playback'
+			})
+		}
+		// 跳转67
 		const go = () => {
 			uni.navigateTo({
 				url: './../search/search'
@@ -112,6 +118,7 @@ export default {
 			data.list = res.data.data;
 			// console.log(data.list);
 		});
+		
 		// 背景颜色
 		const str = i => {
 			// console.log(i);
@@ -125,7 +132,7 @@ export default {
 				data.showFlag = false;
 			}
 		});
-		return { ...toRefs(data), str, go, gosearch };
+		return { ...toRefs(data), str, go, gosearch,play };
 	},
 	components: {
 		swiperbox,

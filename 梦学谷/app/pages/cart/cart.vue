@@ -1,5 +1,5 @@
 <template>
-	<view><search class="search"></search></view>
+	<view><search class="search" @click="gosearch"></search></view>
 	<scroll-view scroll-x="true" class="scroll">
 		<view class="nav">
 			<view v-for="(item, index) in List" :key="index" @click="change(index)" :class="{ txt: true, active: index == id }">{{ item.name }}</view>
@@ -84,7 +84,13 @@ export default {
 				data.showFlag = false;
 			}
 		});
-		return { ...toRefs(data), change };
+		// 跳转
+		const gosearch = () => {
+			uni.navigateTo({
+				url: './../search/search'
+			});
+		};
+		return { ...toRefs(data), change ,gosearch};
 	}
 };
 </script>

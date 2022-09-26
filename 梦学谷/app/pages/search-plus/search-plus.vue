@@ -1,7 +1,6 @@
 <template>
 	<view>
 		<!-- 搜索plus -->
-		<!-- <search-plus></search-plus>-->
 		<searchplus></searchplus>
 		<!-- tab栏 -->
 		<div class="nav-tab">
@@ -30,22 +29,53 @@
 			</div>
 		</div>
 	</view>
+	<!-- 滚动事件 -->
+	<listen class="top" :showFlag="showFlag"></listen>
 </template>
 
 <script>
 	import { useRoute } from 'vue-router'
 	import { reactive,toRefs } from 'vue'
 	import {search} from "../../utils/api.js"
+	import { onPageScroll, onReachBottom, onPullDownRefresh } from '@dcloudio/uni-app'
 	export default {
 		setup() {
 			const route=useRoute()
 			const data=reactive({
-				searchdata:[]
-			})
+				searchdata:[],
+				Page:1,
+				pageSize:10,
+				showFlag:false
+			});
+			// 监听页面滚动事件
+			onPageScroll(e => {
+				if (e.scrollTop > 400) {
+					data.showFlag = true;
+				} else {
+					data.showFlag = false;
+				}
+			});
 			// 搜索
 			search(route.query.content).then(res=>{
 				data.searchdata=res.data.data.records
-			})
+			});
+			// 上拉刷新
+			onPullDownRefresh(() => {
+				data.page = 1;
+				search(data.page, data.pageSize).then(res => {
+					data.searchdata = res.data.records;
+				});
+				// 停止下拉
+				uni.stopPullDownRefresh();
+			});
+			
+			// 触底加载
+			onReachBottom(() => {
+				data.page++;
+				search(data.page, data.pageSize).then(res => {
+					data.searchdata = [...res.data.data.records, ...data.searchdata];
+				});
+			});
 			return {
 				...toRefs(data)
 			}
@@ -136,5 +166,10 @@
 				}
 			}
 		}
+	}
+	.top {
+		position: fixed;
+		right: 20px;
+		bottom: 90px;
 	}
 </style>
