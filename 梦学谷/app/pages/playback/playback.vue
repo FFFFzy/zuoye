@@ -1,12 +1,12 @@
 <template>
-	<view>
-		<uni-popup ref="popup" type="center" class="pop" @maskClick="closePop">
+	<view class="box">
+		<!-- <uni-popup ref="popup" type="center" class="pop" @maskClick="closePop">
 			<p>
 				免费试看
 				<span @click="close">X</span>
 			</p>
 			<video :src="videoUrl" :autoplay="true"></video>
-		</uni-popup>
+		</uni-popup> -->
 		<view class="top-pic">
 			<image :src="detailList.mainImage" mode="" @click="toBack"></image>
 			<span @click="back"></span>
@@ -195,6 +195,7 @@ export default {
 		const toBack = () => {
 			// console.log(444);
 			// router.push("/pages/index/index")
+			router.push('-1')
 		};
 		return {
 			...toRefs(data),
@@ -228,6 +229,13 @@ export default {
 		}
 	}
 }
+// .box{
+// 	z-index: 9999;
+// 	// position: fixed;
+// 	margin-top: -45px;
+// 	// left: 0;
+	
+// }
 // 套餐
 .last-tab {
 	width: 100%;

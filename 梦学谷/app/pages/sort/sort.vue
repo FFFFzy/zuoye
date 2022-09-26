@@ -10,7 +10,7 @@
 			</view>
 		</scroll-view>
 		<view class="right">
-			<view class="right-title" v-for="item,index in List">
+			<view class="right-title" v-for="item,index in List" @click="gosearch">
 				{{item.labelList[id].name}}
 			</view>
 		</view>
@@ -35,7 +35,13 @@ export default {
 			data.List = res.data.data;
 			// console.log(data.List);
 		});
-		return { ...toRefs(data), change };
+		// 跳转详情
+		const gosearch=()=>{
+			uni.navigateTo({
+				url: './../search-plus/search-plus'
+			});
+		}
+		return { ...toRefs(data), change ,gosearch};
 	}
 };
 </script>

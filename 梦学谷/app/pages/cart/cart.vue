@@ -7,7 +7,7 @@
 	</scroll-view>
 	<!-- 内容 -->
 	<div class="content">
-		<div class="hot-content" v-for="(item, index) in groomList" :key="index">
+		<div class="hot-content" v-for="(item, index) in groomList" :key="index" @click="goread">
 			<div class="text">
 				<h5>{{ item.title }}</h5>
 				<p class="time">{{ item.summary }}</p>
@@ -90,7 +90,12 @@ export default {
 				url: './../search/search'
 			});
 		};
-		return { ...toRefs(data), change ,gosearch};
+		const goread = () => {
+			uni.navigateTo({
+				url: './../read/read'
+			});
+		};
+		return { ...toRefs(data), change, gosearch, goread };
 	}
 };
 </script>
@@ -157,6 +162,7 @@ export default {
 	background-color: #345dc2;
 }
 .nav {
+	margin-top: 45px;
 	width: 100%;
 	height: 45px;
 	border-bottom: 1px solid #eee;

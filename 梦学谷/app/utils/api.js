@@ -110,9 +110,9 @@ const getUser = (mobile,code) => {
 	 let data=http.get('course/api/course/null')
 	 return data
  }
- // 获取视频数据
- const getArticle=(id)=>{
- 	 let data=http.get(`course/course/buy/list/null/${id}`)
+ // 获取章节
+ const getArticle=()=>{
+ 	 let data=http.get('course/api/chapter/section/list/null')
  	 return data
  }
  // 获取评论详情
@@ -126,6 +126,18 @@ const getUser = (mobile,code) => {
  	 return data
  }
  
+ 
+ // 阅读详情接口
+ const getArticleDetail=(id)=>{
+	 let data=http.get(`article/api/article/${id}`)
+	 return data
+ }
+ 
+ // 获取阅读评论数据
+ const getArticleAsk=(id)=>{
+	 let data=http.get(`article/api/comment/list/${id}`)
+	 return data
+ }
 
 export {
 	getUser,
@@ -146,5 +158,7 @@ export {
 	getDetailList,
 	getArticle,
 	getComment,
-	getGroup
+	getGroup,
+	getArticleDetail,
+	getArticleAsk
 }

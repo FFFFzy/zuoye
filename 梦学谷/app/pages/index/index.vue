@@ -18,7 +18,7 @@
 		</view>
 		<view class="groom-right">全部></view>
 	</view>
-	<groom></groom>
+	<groom @click="play"></groom>
 	<!-- 近期上新 -->
 	<view class="groom">
 		<view class="groom-left">
@@ -27,7 +27,7 @@
 		</view>
 		<view class="groom-right">全部></view>
 	</view>
-	<new></new>
+	<new @click="play"></new>
 	<!-- 热门推荐 -->
 	<view class="groom">
 		<view class="groom-left">
@@ -36,7 +36,7 @@
 		</view>
 		<view class="groom-right">全部></view>
 	</view>
-	<groom></groom>
+	<groom @click="play"></groom>
 	<!-- 付费精品 -->
 	<view class="groom">
 		<view class="groom-left">
@@ -45,7 +45,7 @@
 		</view>
 		<view class="groom-right">全部></view>
 	</view>
-	<pay :lists="Lists"></pay>
+	<pay :lists="Lists" @click="play"></pay>
 	<!-- 滚动事件 -->
 	<listen class="top" :showFlag="showFlag"></listen>
 	<!-- 底部 -->

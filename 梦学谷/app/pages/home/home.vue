@@ -7,7 +7,7 @@
 	</div>
 	<!-- 内容 -->
 	<div class="content">
-		<div class="list" v-for="(item, index) in List" :key="index">
+		<div class="list" v-for="(item, index) in List" :key="index" @click="goread">
 			<h4>{{ item.title }}</h4>
 			<p>
 				<span>{{ item.reply }}回答·{{ item.viewCount }}浏览</span>
@@ -62,6 +62,12 @@ export default {
 				});
 			}
 		};
+		// 跳转
+		const goread = () => {
+			uni.navigateTo({
+				url: './../read/read'
+			});
+		};
 		onPullDownRefresh(() => {
 			data.page = 1;
 			Questionsnav(data.page, data.pageSize).then(res => {
@@ -91,7 +97,7 @@ export default {
 				url: './../search/search'
 			});
 		};
-		return { tohot, ...toRefs(data),gosearch };
+		return { tohot, ...toRefs(data),gosearch ,goread};
 	}
 };
 </script>

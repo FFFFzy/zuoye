@@ -17,7 +17,13 @@
 			}
 		},
 		{
-			"path": "pages/cart/cart"
+			"path": "pages/cart/cart",
+			"style": {
+				"app-plus": {
+					"softinputNavBar": "none",
+					"titleNView": false
+				}
+			}
 		}
         ,{
             "path" : "pages/sort/sort",
@@ -92,6 +98,31 @@
             "style" :                                                                                    
             {
                 "navigationBarTitleText": "",
+                "enablePullDownRefresh": false,
+				"app-plus": {
+					"softinputNavBar": "none",
+					"titleNView": false
+				}
+            }
+            
+        }
+        ,{
+            "path" : "pages/read/read",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "",
+                "enablePullDownRefresh": false,
+				"app-plus": {
+					"titleNView":false
+				}
+            }
+            
+        }
+        ,{
+            "path" : "pages/install/install",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "设置",
                 "enablePullDownRefresh": false
             }
             

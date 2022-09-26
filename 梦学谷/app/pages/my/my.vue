@@ -11,36 +11,36 @@
 			</div>
 			<div class="my-item">
 				<div class="my">
-					<img src="/static/fonticon/dingdan.png" alt="" />
+					<img src="../../static/fonticon/dingdan.png" alt="" />
 					<div>我的订单</div>
 					<p>></p>
 				</div>
 				<div class="my">
-					<img src="/static/fonticon/chesuo.png" alt="" />
+					<img src="../../static/fonticon/chesuo.png" alt="" />
 					<div>我的余额</div>
 					<p>></p>
 				</div>
 				<div class="my">
-					<img src="/static/fonticon/jiangpai.png" alt="" />
+					<img src="../../static/fonticon/jiangpai.png" alt="" />
 					<div>我的学习</div>
 					<p>></p>
 				</div>
 			</div>
 			<div class="my-item">
-				<div class="my">
-					<img src="/static/fonticon/shezhi.png" alt="" />
+				<div class="my" @click="goinstall">
+					<img src="../../static/fonticon/shezhi.png" alt="" />
 					<div>设置</div>
 					<p>></p>
 				</div>
 				<div class="my">
-					<img src="/static/fonticon/labagonggao.png" alt="" />
+					<img src="../../static/fonticon/labagonggao.png" alt="" />
 					<div>意见反馈</div>
 					<p>></p>
 				</div>
 			</div>
 			<div class="my-item">
 				<div class="my">
-					<img src="/static/fonticon/guanyuwomen.png" alt="" />
+					<img src="../../static/fonticon/guanyuwomen.png" alt="" />
 					<div>关于我们</div>
 					<p>></p>
 				</div>
@@ -63,7 +63,12 @@ export default {
 				url: '../login/login'
 			});
 		};
-		return { login, ...toRefs(data) };
+		const goinstall=()=>{
+			uni.navigateTo({
+				url:'./../install/install'
+			})
+		}
+		return { login, ...toRefs(data) ,goinstall};
 	},
 	onShow() {
 		this.userList = JSON.parse(localStorage.getItem('user'))
@@ -93,6 +98,7 @@ export default {
 			width: 45rpx;
 			height: 45rpx;
 			margin: 0 20rpx;
+			font-size: 22px;
 		}
 		p {
 			position: absolute;
