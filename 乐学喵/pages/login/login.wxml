@@ -1,0 +1,27 @@
+<view>
+  <view class="box-img">
+    <image class="img" src="https://wap.lexuemiao.com/img/logo@2x.a4702f31.png"></image>
+  </view>
+  <!-- input框 -->
+  <view class="box-ipt">
+    <view class="ipt">
+      <image class="img" src="../../images/手机(1).png"></image>
+      <input type="text" placeholder="请输入手机号" />
+    </view>
+    <view class="ipt">
+      <image class="img" src="../../images/安全，盾牌(1).png"></image>
+      <input type="password" placeholder="请输入密码" />
+    </view>
+    <view class="ipt">
+      <image class="img" src="../../images/安全，盾牌(1).png"></image>
+      <input type="password" placeholder="请输入验证码" />
+      <text>111</text>
+    </view>
+  </view>
+  <!-- 按钮 -->
+  <button class="btn" style="width: 600rpx;" bindtap="login">登录</button>
+  <view class="txt">
+    <text class="txt1">忘记密码?</text>
+    <text class="txt2">注册/忘记密码</text>
+  </view>
+</view>

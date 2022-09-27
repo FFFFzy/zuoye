@@ -1,0 +1,41 @@
+<view class="box">
+  <!-- 头部 -->
+  <view class="header">
+    <text>管理类联考></text>
+    <view class="pic">
+      <image class="img" src="../../images/搜索.png"></image>
+      <image class="img1" src="../../images/下载.png"></image>
+    </view>
+  </view>
+  <!-- nav导航栏 -->
+  <view class="nav">
+    <view wx:for="{{navList}}" wx:key="index">
+      <text bindtap="highlight" class="{{index==currentindex?'active':''}}" data-index="{{index}}">{{item.title}}</text>
+    </view>
+  </view>
+  <!-- 轮播图 -->
+  <view class="swiper">
+    <swiper indicator-dots indicator-color="#ccc" indicator-active-color="#fff" autoplay>
+      <swiper-item>
+        <image src="https://lexuemiao.oss-cn-beijing.aliyuncs.com/uploads/image/20224mgsc1vs1662350004.jpg"></image>
+      </swiper-item>
+      <swiper-item>
+        <image src="https://lexuemiao.oss-cn-beijing.aliyuncs.com/uploads/image/20224mgsc1vs1662350004.jpg"></image>
+      </swiper-item>
+      <swiper-item>
+        <image src="https://lexuemiao.oss-cn-beijing.aliyuncs.com/uploads/image/20224mgsc1vs1662350004.jpg"></image>
+      </swiper-item>
+      <swiper-item>
+        <image src="https://lexuemiao.oss-cn-beijing.aliyuncs.com/uploads/image/20224mgsc1vs1662350004.jpg"></image>
+      </swiper-item>
+    </swiper>
+    <!-- 今日直播 -->
+    <view class="contentnav">
+      <image class="img1" src="../../images/小松鼠.png"></image>
+      <image class="img2" src="../../images/今日直播.png"></image>|
+      <text>19:00</text><text>23管综考前40天面授集训…</text>
+    </view>
+  </view>
+
+
+</view>
