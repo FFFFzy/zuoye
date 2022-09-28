@@ -15,7 +15,9 @@
     "navigationBarTitleText": "乐学喵",
     "navigationBarTextStyle": "black"
   },
-  "style": "v2",
+  "usingComponents": {
+    "van-button": "@vant/weapp/button/index"
+  },
   "sitemapLocation": "sitemap.json",
   "tabBar": {
     "list": [
