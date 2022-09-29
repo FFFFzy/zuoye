@@ -1,5 +1,5 @@
 {
-  "projectname": "%E4%B9%90%E5%AD%A6%E5%96%B5",
+  "projectname": "miniprogram",
   "setting": {
     "compileHotReLoad": false
   },
@@ -9,21 +9,35 @@
       "list": [
         {
           "name": "",
-          "pathName": "pages/logs/logs",
-          "query": "",
-          "launchMode": "default",
-          "scene": null
-        },
-        {
-          "name": "",
-          "pathName": "pages/selection/selection",
-          "query": "",
-          "launchMode": "default",
-          "scene": null
-        },
-        {
-          "name": "",
           "pathName": "pages/login/login",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "",
+          "pathName": "pages/passwordLogin/passwordLogin",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "",
+          "pathName": "pages/index/index",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "",
+          "pathName": "pages/selcourse/selcourse",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "",
+          "pathName": "pages/personal/personal",
           "query": "",
           "launchMode": "default",
           "scene": null
