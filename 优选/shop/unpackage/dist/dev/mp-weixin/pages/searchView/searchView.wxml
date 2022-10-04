@@ -1,1 +1,0 @@
-<view class="search-box"><view class="top-search"><input type="text" placeholder="请输入您要搜索的商品" value="{{a}}" bindinput="{{b}}"></input><view class="qx"> 取消 </view></view></view>

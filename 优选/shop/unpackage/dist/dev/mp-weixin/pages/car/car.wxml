@@ -1,1 +1,0 @@
-<view class="head-btn"><u-button wx:if="{{a}}" u-s="{{['d']}}" class="address-btn" u-i="ccfccb8c-0" bind:__l="__l" u-p="{{a}}">获取收货地址</u-button></view>

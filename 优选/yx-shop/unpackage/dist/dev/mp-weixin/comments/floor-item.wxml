@@ -1,0 +1,1 @@
+<view class="top"><image src="{{a}}" mode=""></image></view><view class="contents"><view wx:for="{{b}}" wx:for-item="item" wx:key="b" class="content-item"><image class="_img" src="{{item.a}}" mode=""></image></view></view>

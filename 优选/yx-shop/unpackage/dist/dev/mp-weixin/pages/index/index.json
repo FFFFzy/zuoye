@@ -1,0 +1,9 @@
+{
+  "navigationBarTitleText": "优购商城",
+  "navigationBarBackgroundColor": "#d75255",
+  "usingComponents": {
+    "u-swiper": "../../uni_modules/vk-uview-ui/components/u-swiper/u-swiper",
+    "floor-item": "../../comments/floor-item",
+    "searchplus": "../../comments/search-plus"
+  }
+}

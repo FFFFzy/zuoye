@@ -1,1 +1,0 @@
-<view class="head-ipt"><input class="ipt" disabled placeholder="搜索" bindtap="{{a}}"/></view>
