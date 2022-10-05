@@ -1,0 +1,1 @@
+<u-swiper wx:if="{{a}}" class="img" u-i="4ab72224-0" bind:__l="__l" u-p="{{a}}"></u-swiper><view class="price">￥ {{b}}</view><view class="title"><view>{{c}}</view><view><u-icon wx:if="{{d}}" u-i="4ab72224-1" bind:__l="__l" u-p="{{d}}"></u-icon> 收藏 </view></view><u-parse wx:if="{{e}}" u-i="4ab72224-2" bind:__l="__l" u-p="{{e}}"></u-parse>

@@ -4,7 +4,8 @@
     "pages/classify/classify",
     "pages/mine/mine",
     "pages/cart/cart",
-    "pages/search/search"
+    "pages/search/search",
+    "pages/Detail/Detail"
   ],
   "window": {
     "navigationBarTextStyle": "black",
@@ -40,5 +41,6 @@
       }
     ]
   },
-  "usingComponents": {}
+  "usingComponents": {},
+  "sitemapLocation": "sitemap.json"
 }
