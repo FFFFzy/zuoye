@@ -38,9 +38,34 @@ const _sfc_main = {
         item.status = !data.checkedAll;
       });
     };
+    const checkOne = (index2) => {
+      data.goods[index2].status = !data.goods[index2].status;
+      data.checkedAll = data.goods.every((item) => item.status);
+    };
+    const totalNum = common_vendor.computed$1(() => {
+      let sum = 0;
+      data.goods.forEach((item) => {
+        if (item.status) {
+          sum += item.number;
+        }
+      });
+      return sum;
+    });
+    const totalPrice = common_vendor.computed$1(() => {
+      let sum1 = 0;
+      data.goods.forEach((item) => {
+        if (item.status) {
+          sum1 += item.number * item.price;
+        }
+      });
+      return sum1;
+    });
     return __spreadProps(__spreadValues({}, common_vendor.toRefs(data)), {
       valChange,
-      check
+      check,
+      checkOne,
+      totalPrice,
+      totalNum
     });
   },
   onShow() {
@@ -64,28 +89,31 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
   return {
     a: common_vendor.f(_ctx.goods, (item, index2, i0) => {
       return {
-        a: "6a7ded84-0-" + i0,
-        b: common_vendor.o(($event) => item.status = $event),
-        c: common_vendor.p({
+        a: common_vendor.o(($event) => $setup.checkOne(index2)),
+        b: "6a7ded84-0-" + i0,
+        c: common_vendor.o(($event) => item.status = $event),
+        d: common_vendor.p({
           modelValue: item.status
         }),
-        d: item.url,
-        e: common_vendor.t(item.name),
-        f: common_vendor.t(item.price),
-        g: common_vendor.o(($event) => $setup.valChange(index2)),
-        h: "6a7ded84-1-" + i0,
-        i: common_vendor.o(($event) => item.number = $event),
-        j: common_vendor.p({
+        e: item.url,
+        f: common_vendor.t(item.name),
+        g: common_vendor.t(item.price),
+        h: common_vendor.o(($event) => $setup.valChange(index2)),
+        i: "6a7ded84-1-" + i0,
+        j: common_vendor.o(($event) => item.number = $event),
+        k: common_vendor.p({
           modelValue: item.number
         }),
-        k: index2
+        l: index2
       };
     }),
     b: common_vendor.o($setup.check),
     c: common_vendor.o(($event) => _ctx.checkedAll = $event),
     d: common_vendor.p({
       modelValue: _ctx.checkedAll
-    })
+    }),
+    e: common_vendor.t($setup.totalPrice),
+    f: common_vendor.t($setup.totalNum)
   };
 }
 var MiniProgramPage = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["render", _sfc_render], ["__file", "C:/Users/Z/Desktop/\u4F18\u9009/yx-shop/pages/cart/cart.vue"]]);

@@ -9,7 +9,7 @@
 		</view>
 		<view class="middle">购物车</view>
 		<view class="bottom" v-for="(item, index) in goods" :key="index">
-			<view class="fubox"><u-checkbox v-model="item.status"></u-checkbox></view>
+			<view class="fubox"><u-checkbox v-model="item.status" @change="checkOne(index)"></u-checkbox></view>
 			<view class="imgs"><img class="imgss" :src="item.url" alt="" /></view>
 			<view class="detail">
 				<view class="desc">{{ item.name }}</view>
@@ -28,11 +28,11 @@
 				<view class="leftt">
 					<p>
 						合计:
-						<span class="spann">￥1899</span>
+						<span class="spann">￥{{totalPrice}}</span>
 					</p>
 					<p>包含运费</p>
 				</view>
-				<view class="rightt">结算(1)</view>
+				<view class="rightt">结算({{totalNum}})</view>
 			</view>
 		</view>
 	</view>
@@ -40,7 +40,7 @@
 
 <script lang="ts">
 import { log } from 'console';
-import { reactive, toRefs } from 'vue';
+import { computed, reactive, toRefs } from 'vue';
 
 export default {
 	setup() {
@@ -64,11 +64,41 @@ export default {
 				item.status=!data.checkedAll
 			});
 		};
+		// 反选
+		const checkOne=(index)=>{
+			// console.log(data.goods);
+			data.goods[index].status=!data.goods[index].status
+			data.checkedAll=data.goods.every(item=>item.status)
+		}
+		// 计算价格数量
+		const totalNum=computed(()=>{
+			let sum=0
+			data.goods.forEach(item=>{
+				if(item.status){
+					sum+=item.number
+				}
+			})
+			return sum
+		})
+		// 计算价格
+		const totalPrice = computed(()=>{
+			let sum1=0
+			data.goods.forEach(item=>{
+				if(item.status){
+					sum1+=item.number*item.price
+				}
+			})
+			return sum1
+		})
 		return {
 			...toRefs(data),
 			valChange,
-			check
+			check,
+			checkOne,
+			totalPrice,
+			totalNum
 		};
+		
 	},
 	onShow() {
 		uni.getStorage({
